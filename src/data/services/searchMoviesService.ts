@@ -12,6 +12,7 @@ async function searchMoviesService(query: string): Promise<movies> {
          return res.data;
      }
     res = await axios.get(url);
+    
     return res.data;
  }
 
