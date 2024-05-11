@@ -7,7 +7,9 @@ interface moviesStoreData {
     setMovies: (movies: movies) => void,
     setLoading: (isLoading: boolean) => void,
     query: string,
-    setQuery: (query: string) => void
+    setQuery: (query: string) => void,
+    page: number,
+    setPage: (page: number) => void
 }
 export const moviesStore = create<moviesStoreData>()((set) => ({
     movies:{ page: 0, results: [] },
@@ -16,4 +18,6 @@ export const moviesStore = create<moviesStoreData>()((set) => ({
     setLoading: (isLoading: boolean) => set({ isLoading }),
     query: '',
     setQuery: (query: string) => set({ query }),
+    page: 1,
+    setPage: (page: number) => set({ page }),
 }))

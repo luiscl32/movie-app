@@ -11,16 +11,17 @@ function useNavigateToMovieDetail() {
 }
 
 function MovieList() {
-    const { movies, isLoading } = useGetMovies(1);
+    const { movies, isLoading } = useGetMovies();
     const { navigateToMovieDetail } = useNavigateToMovieDetail();
 
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
+    
+
+ 
     return (
      <section className="grid grid-cols-6 gap-4" >
         {
-            movies.results.map((movie: Movie) => (
+                movies.results.map((movie: Movie) => (
+                <>
                 <MovieCard
                     onClick={() => navigateToMovieDetail(movie.id)}
                     key={movie.id}
@@ -28,7 +29,9 @@ function MovieList() {
                     vote_average={movie.vote_average}
                     release_date={movie.release_date}
                     poster_path={movie.poster_path}
-                />
+                        />
+                  {isLoading && <div>Loading...</div>}      
+                </>
             ))
         
         }
